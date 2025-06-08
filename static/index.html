@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公車預估到站時間查詢</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+       <div class="section">
+           <h2>步驟 0: 輸入路線關鍵字</h2>
+           <label for="route-input">路線關鍵字：</label>
+           <input id="route-input" type="text" placeholder="輸入路線，例如：1815">
+           <button id="search-route-button" disabled>搜尋路線</button>
+       </div>
+        <h1>公車預估到站時間查詢</h1>
+
+        <div id="messages-container"></div>
+        <div id="loader" class="loader"></div>
+
+        <div class="section">
+            <h2>步驟 1: 選擇路線班次</h2>
+            <label for="route-select">選擇路線：</label>
+            <select id="route-select" disabled>
+                <option value="">-- 請先載入資料 --</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <h2>步驟 2: 選擇公車</h2>
+            <label for="bus-select">選擇公車：</label>
+            <select id="bus-select" disabled>
+                <option value="">-- 請先選擇路線 --</option>
+            </select>
+        </div>
+        
+        <button id="get-eta-button" disabled>查詢預估到站時間</button>
+
+        <div id="eta-results-container" class="section" style="display: none;">
+            <h2>預估到站時間結果</h2>
+            <div id="bus-details-info"></div>
+            <ul id="eta-list"></ul>
+        </div>
+    </div>
+
+    <script defer src="/static/script.js"></script>
+</body>
+</html>
