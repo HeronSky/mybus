@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'YOUR_RENDER_BACKEND_URL'; 
+    const API_BASE_URL = 'https://mybus-htsa.onrender.com'; 
 
     const routeInput = document.getElementById('route-input');
     const searchRouteBtn = document.getElementById('search-route-button');
