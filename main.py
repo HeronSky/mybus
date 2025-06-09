@@ -77,8 +77,8 @@ def get_bus_stop_info_logic(target_plate, route_name_param=None, direction_param
     stops_of_route_data_full, error_stops = fetch_tdx_data_with_token(api_url_stops, access_token, params={'$format': 'JSON'})
 
     if error_stops is not None:
-        results["error"] = f"TDX API 錯誤 (代碼: {error_stops}) (查詢站序資料時)。"
-        if error_stops == 429: results["error"] = "TDX API 請求過於頻繁 (查詢站序資料時)。"
+        results["error"] = f"TDX API 錯誤 (代碼: {error_stops})。"
+        if error_stops == 429: results["error"] = "TDX API 請求過於頻繁。"
         return results
 
     route_specific_stops_data = None
@@ -207,7 +207,7 @@ def get_bus_stop_info_logic(target_plate, route_name_param=None, direction_param
                                 try:
                                     base_dt = datetime.strptime(data_time_str, "%Y-%m-%dT%H:%M:%S%z")
                                     arrival_dt = base_dt + timedelta(seconds=estimate_time_seconds)
-                                    status = arrival_dt.strftime("%H:%M:%S") + " (TDX API)"
+                                    status = arrival_dt.strftime("%H:%M:%S") + " (動態資料)"
                                 except ValueError:
                                     status = f"{estimate_time_seconds // 60}分{estimate_time_seconds % 60}秒 (TDX Raw)"
                             else:
@@ -286,9 +286,9 @@ def get_bus_stop_info_logic(target_plate, route_name_param=None, direction_param
                 
                 if calculation_possible:
                     estimated_time_s2s = current_bus_time + timedelta(seconds=cumulative_s2s_time)
-                    status = estimated_time_s2s.strftime("%H:%M:%S") + " (S2S計算)"
+                    status = estimated_time_s2s.strftime("%H:%M:%S") + " (歷史數據計算)"
                 elif not calculation_possible:
-                    status = "無法預估 (S2S計算時缺資料)"
+                    status = "無法預估 (缺少站間路程資料)"
         
         results["upcoming_stops"].append({
             "stop_sequence": stop_sequence_tdx,
