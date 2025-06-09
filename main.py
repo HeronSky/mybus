@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from flask import Flask, jsonify, request, send_from_directory
-from flask_cors import CORS # 新增這一行
+from flask_cors import CORS
 import os
 from auth_TDX import get_tdx_access_token, fetch_tdx_data_with_token, app_id as tdx_app_id, app_key as tdx_app_key
 
@@ -9,7 +9,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 app = Flask(__name__, static_folder=STATIC_DIR)
 
-# 在這裡加入 CORS 設定
+
 CORS(app, origins=[
     "https://myybuss.netlify.app",
     "https://heronsky.github.io",
