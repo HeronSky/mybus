@@ -227,9 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <strong>目前位置:</strong> ${data.bus_details.current_stop_name} (站序 ${data.bus_details.current_stop_sequence || 'N/A'})<br>
                         <strong>GPS時間:</strong> ${data.bus_details.gps_time || 'N/A'}
                     </p>
-                    <h4>預計到站時間:</h4>`;
-            } else {
-                 busDetailsInfoDiv.innerHTML = '<h4>預計到站時間:</h4>';
+                `;
             }
 
             if (data.upcoming_stops && data.upcoming_stops.length > 0) {
